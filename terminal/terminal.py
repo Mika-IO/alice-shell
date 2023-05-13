@@ -7,8 +7,10 @@ import cmd
 
 
 INTRO_TEXT = """
+
 Welcome to AliceShell, the simple multitab terminal
 Type shortcuts or help for instructions on how to use AliceShell
+
 """
 
 
@@ -29,7 +31,7 @@ class Terminal(tk.Text, cmd.Cmd):
     def show_prompt(self):
         currenty_dir = str(os.popen("cd").read()).strip()
         user_name = str(getpass.getuser())
-        self.insert_text(f"@{user_name} {currenty_dir}>> ", end="")
+        self.insert_text(f"aliceShell@{user_name}>> ", end="")
         self.mark_set(tk.INSERT, tk.END)  # make sure the input cursor is at the end
         self.cursor = self.index(tk.INSERT)  # save the input position
 
@@ -62,7 +64,7 @@ class Terminal(tk.Text, cmd.Cmd):
             self.master.destroy()  # quit the shell
 
     def run(self, cmd):
-        self.cmd = cmd
+        self.cmd = cmd.strip()
         if cmd == "cls" or cmd == "clear":
             self.delete("1.0", tk.END)
             return
