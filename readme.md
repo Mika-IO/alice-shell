@@ -1,3 +1,3 @@
 # Alice $hell
 
-![alt text](shell.PNG)
+![alt text](alice-shell.PNG)
